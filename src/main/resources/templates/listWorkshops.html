@@ -64,6 +64,8 @@
                         + ', Category: ' + ${workshop.category}
                         + ', Price: ' + ${workshop.price}
                         + ' MKD, Free seats: ' + ${workshop.capacity}"></span>
+<!--                <a th:text='Delete' href="/delete" name="title" th:value="${workshop.title}" th:title="${workshop.title}"></a>-->
+                <a th:text='Delete' th:href="@{'/delete?title=' + ${workshop.title}}"></a>
             </label>
         </div>
 

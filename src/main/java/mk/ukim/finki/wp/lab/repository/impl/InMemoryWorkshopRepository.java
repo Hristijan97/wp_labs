@@ -34,4 +34,9 @@ public class InMemoryWorkshopRepository implements WorkshopRepository {
                 .filter(w -> maxPrice == null || w.getPrice() <= maxPrice)
                 .toList();
     }
+
+    @Override
+    public void deleteByTitle(String title) {
+        DataHolder.workshops.removeIf(workshop -> workshop.getTitle().equals(title));
+    }
 }

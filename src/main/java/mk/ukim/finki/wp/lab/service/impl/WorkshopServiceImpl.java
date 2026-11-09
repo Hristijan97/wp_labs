@@ -25,4 +25,9 @@ public class WorkshopServiceImpl implements WorkshopService {
     public List<Workshop> search(String text, Double maxPrice) {
         return workshopRepository.search(text, maxPrice);
     }
+
+    @Override
+    public void deleteByTitle(String title) {
+        workshopRepository.deleteByTitle(title);
+    }
 }

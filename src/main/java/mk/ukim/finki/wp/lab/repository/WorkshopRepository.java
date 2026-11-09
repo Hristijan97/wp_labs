@@ -8,4 +8,5 @@ public interface WorkshopRepository {
     List<Workshop> findAll();
     Optional<Workshop> findByTitle(String title);
     List<Workshop> search(String text, Double maxPrice);
+    void deleteByTitle(String title);
 }

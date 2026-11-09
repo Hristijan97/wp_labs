@@ -6,4 +6,5 @@ import java.util.List;
 public interface RegistrationRepository {
     Registration save(Registration registration);
     List<Registration> findAll();
+    void deleteByTitle(String title);
 }

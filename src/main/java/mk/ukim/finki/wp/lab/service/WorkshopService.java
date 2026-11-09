@@ -6,4 +6,5 @@ import java.util.List;
 public interface WorkshopService {
     List<Workshop> listAll();
     List<Workshop> search(String text, Double maxPrice);
+    void deleteByTitle(String title);
 }

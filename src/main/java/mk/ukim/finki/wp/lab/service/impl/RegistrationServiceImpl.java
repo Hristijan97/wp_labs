@@ -51,4 +51,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
         return registrationRepository.save(registration);
     }
+
+    @Override
+    public void deleteByTitle(String title) {
+        registrationRepository.deleteByTitle(title);
+    }
 }

@@ -20,4 +20,9 @@ public class InMemoryRegistrationRepository implements RegistrationRepository {
     public List<Registration> findAll() {
         return DataHolder.registrations;
     }
+
+    @Override
+    public void deleteByTitle(String title) {
+        DataHolder.registrations.removeIf(registration -> registration.getWorkshopTitle().equals(title));
+    }
 }
