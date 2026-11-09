@@ -15,7 +15,7 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "workshop-list-servlet", urlPatterns = "")
+@WebServlet(name = "workshop-list-servlet", urlPatterns = "/servlet/workshops")
 public class WorkshopListServlet extends HttpServlet {
 
     private final WorkshopService workshopService;
@@ -64,7 +64,7 @@ public class WorkshopListServlet extends HttpServlet {
         context.setVariable("maxPrice", maxPriceParam);
 
         springTemplateEngine.process(
-                "listWorkshops",
+                "servletListWorkshops",
                 context,
                 resp.getWriter()
         );

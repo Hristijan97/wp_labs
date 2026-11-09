@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-@WebServlet(name = "registration-servlet", urlPatterns = "/registration")
+@WebServlet(name = "registration-servlet", urlPatterns = "/servlet/registration")
 public class RegistrationServlet extends HttpServlet {
 
     private final RegistrationService registrationService;
@@ -42,7 +42,7 @@ public class RegistrationServlet extends HttpServlet {
         try {
             numberOfSeats = Integer.parseInt(numSeatsParam);
         } catch (NumberFormatException e) {
-            resp.sendRedirect("/?errorMessage="
+            resp.sendRedirect("/servlet/workshops?errorMessage="
                     + URLEncoder.encode("Invalid number of seats", StandardCharsets.UTF_8));
             return;
         }

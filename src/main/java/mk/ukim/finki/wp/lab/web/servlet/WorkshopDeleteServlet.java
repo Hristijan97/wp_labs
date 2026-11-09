@@ -16,7 +16,7 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "workshop-delete-servlet", urlPatterns = "/delete")
+@WebServlet(name = "workshop-delete-servlet", urlPatterns = "/servlet/delete")
 public class WorkshopDeleteServlet extends HttpServlet {
 
     private final WorkshopService workshopService;
@@ -54,7 +54,7 @@ public class WorkshopDeleteServlet extends HttpServlet {
         context.setVariable("errorMessage", req.getParameter("errorMessage"));
 
         springTemplateEngine.process(
-                "listWorkshops",
+                "servletListWorkshops",
                 context,
                 resp.getWriter()
         );

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Workshop Form</title>
+    <style type="text/css">
+        body { width: 600px; margin: auto; font-family: Arial, sans-serif; }
+        h1 { color: #333; }
+        form { margin-top: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+        .btn { padding: 10px 20px; margin-top: 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<h1 th:text="${workshop != null} ? 'Edit Workshop' : 'Add New Workshop'"></h1>
+
+<!--<form th:action="${workshop != null} ? @{/workshops/edit/{id}(id=${workshop.id})} : @{/workshops/add}"-->
+<!--      method="POST">-->
+<form th:action="${formAction}" method="POST">
+
+    <label>Title:</label>
+    <input type="text" name="title"
+           th:value="${workshop != null} ? ${workshop.title} : ''"
+           required><br/>
+
+    <label>Category:</label>
+    <input type="text" name="category"
+           th:value="${workshop != null} ? ${workshop.category} : ''"
+           required><br/>
+
+    <label>Price (MKD):</label>
+    <input type="number" name="price" min="0" step="0.01"
+           th:value="${workshop != null} ? ${workshop.price} : ''"
+           required><br/>
+
+    <label>Capacity:</label>
+    <input type="number" name="capacity" min="0"
+           th:value="${workshop != null} ? ${workshop.capacity} : ''"
+           required><br/>
+
+    <label>Instructor:</label>
+    <select name="instructorId" required>
+        <option th:each="instructor : ${instructors}"
+                th:value="${instructor.id}"
+                th:text="${instructor.name + ' ' + instructor.surname}"
+                th:selected="${workshop != null and instructor.id == workshop.instructor.id}"></option>
+    </select><br/>
+
+    <input type="submit" class="btn"
+           th:value="${workshop != null} ? 'Update Workshop' : 'Add Workshop'">
+</form>
+
+<a href="/workshops">Back to workshops</a>
+</body>
+</html>

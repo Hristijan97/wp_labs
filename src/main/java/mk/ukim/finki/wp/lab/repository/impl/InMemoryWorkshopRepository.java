@@ -25,6 +25,14 @@ public class InMemoryWorkshopRepository implements WorkshopRepository {
     }
 
     @Override
+    public Optional<Workshop> findById(Long id) {
+        return DataHolder.workshops
+                .stream()
+                .filter(w -> w.getId().equals(id))
+                .findFirst();
+    }
+
+    @Override
     public List<Workshop> search(String text, Double maxPrice) {
         return DataHolder.workshops
                 .stream()
@@ -35,6 +43,19 @@ public class InMemoryWorkshopRepository implements WorkshopRepository {
                 .toList();
     }
 
+    @Override
+    public Workshop save(Workshop workshop) {
+        DataHolder.workshops.removeIf(w -> w.getId().equals(workshop.getId()));
+        DataHolder.workshops.add(workshop);
+        return workshop;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        DataHolder.workshops.removeIf(w -> w.getId().equals(id));
+    }
+
+    // servletite ja koristea
     @Override
     public void deleteByTitle(String title) {
         DataHolder.workshops.removeIf(workshop -> workshop.getTitle().equals(title));
